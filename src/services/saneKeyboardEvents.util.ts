@@ -348,6 +348,12 @@ var saneKeyboardEvents = (function () {
         textarea.focus();
       }
 
+      const clipboardEvent = e instanceof ClipboardEvent ? e : undefined;
+      if (clipboardEvent && controller.options.overridePaste) {
+        controller.options.overridePaste(clipboardEvent);
+        return;
+      }
+
       everyTick.listen(function pastedText() {
         if (!(textarea instanceof HTMLTextAreaElement)) return;
         var text = textarea.value;
@@ -396,12 +402,22 @@ var saneKeyboardEvents = (function () {
         keypress: onKeypress,
         keyup: onKeyup,
         focusout: onBlur,
-        cut: function () {
+        cut: function (evt: Event) {
+          const clipboardEvent = evt instanceof ClipboardEvent ? evt : undefined;
+          if (clipboardEvent && controller.options.overrideCut) {
+            controller.options.overrideCut(clipboardEvent);
+            return;
+          }
           everyTick.listenOnce(function () {
             controller.cut();
           });
         },
-        copy: function () {
+        copy: function (evt: Event) {
+          const clipboardEvent = evt instanceof ClipboardEvent ? evt : undefined;
+          if (clipboardEvent && controller.options.overrideCopy) {
+            controller.options.overrideCopy(clipboardEvent);
+            return;
+          }
           everyTick.listenOnce(function () {
             controller.copy();
           });

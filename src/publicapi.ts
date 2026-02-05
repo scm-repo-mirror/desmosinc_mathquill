@@ -113,6 +113,9 @@ class Options {
   disableCopyPaste?: boolean;
   statelessClipboard?: boolean;
   logAriaAlerts?: boolean;
+  overridePaste?: (event?: ClipboardEvent) => void;
+  overrideCopy?: (event?: ClipboardEvent) => void;
+  overrideCut?: (event?: ClipboardEvent) => void;
   onPaste?: () => void;
   onCut?: () => void;
   overrideTypedText?: (text: string) => void;
