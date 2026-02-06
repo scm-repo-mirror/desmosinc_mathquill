@@ -403,7 +403,8 @@ var saneKeyboardEvents = (function () {
         keyup: onKeyup,
         focusout: onBlur,
         cut: function (evt: Event) {
-          const clipboardEvent = evt instanceof ClipboardEvent ? evt : undefined;
+          const clipboardEvent =
+            evt instanceof ClipboardEvent ? evt : undefined;
           if (clipboardEvent && controller.options.overrideCut) {
             controller.options.overrideCut(clipboardEvent);
             return;
@@ -413,7 +414,8 @@ var saneKeyboardEvents = (function () {
           });
         },
         copy: function (evt: Event) {
-          const clipboardEvent = evt instanceof ClipboardEvent ? evt : undefined;
+          const clipboardEvent =
+            evt instanceof ClipboardEvent ? evt : undefined;
           if (clipboardEvent && controller.options.overrideCopy) {
             controller.options.overrideCopy(clipboardEvent);
             return;
