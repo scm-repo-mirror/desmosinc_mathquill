@@ -349,7 +349,7 @@ var saneKeyboardEvents = (function () {
       }
 
       const clipboardEvent = e instanceof ClipboardEvent ? e : undefined;
-      if (clipboardEvent && controller.options.overridePaste) {
+      if (clipboardEvent && controller.options?.overridePaste) {
         controller.options.overridePaste(clipboardEvent);
         return;
       }
@@ -405,7 +405,7 @@ var saneKeyboardEvents = (function () {
         cut: function (evt: Event) {
           const clipboardEvent =
             evt instanceof ClipboardEvent ? evt : undefined;
-          if (clipboardEvent && controller.options.overrideCut) {
+          if (clipboardEvent && controller.options?.overrideCut) {
             controller.options.overrideCut(clipboardEvent);
             return;
           }
@@ -416,7 +416,7 @@ var saneKeyboardEvents = (function () {
         copy: function (evt: Event) {
           const clipboardEvent =
             evt instanceof ClipboardEvent ? evt : undefined;
-          if (clipboardEvent && controller.options.overrideCopy) {
+          if (clipboardEvent && controller.options?.overrideCopy) {
             controller.options.overrideCopy(clipboardEvent);
             return;
           }
